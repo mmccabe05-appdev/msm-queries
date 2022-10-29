@@ -1,5 +1,5 @@
-class Director
-  def Director.all
-    
-  end
+class Director < ApplicationRecord
+  # def Director.all
+
+  # end
 end

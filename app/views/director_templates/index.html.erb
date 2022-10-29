@@ -1,3 +1,19 @@
 <h1>List of all directors</h1>
 
-<%= Director.all %>
+<table>
+<tr>
+  <td>ID</td>
+  <td>Image</td>
+  <td>Name</td>
+  <td>Dob</td>
+  <td></td>
+</tr>
+<% Director.all.each do |a_thing| %>
+<tr>
+<td><%= a_thing.id %></td>
+<td><img src="<%= a_thing.image %>" width="250px"></td>
+<td><%= a_thing.name %></td>
+<td><%= a_thing.dob %></td>
+<td>Show details</td>
+</tr>
+<% end %>
