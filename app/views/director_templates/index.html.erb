@@ -1,6 +1,6 @@
 <h1>List of all directors</h1>
-
-<table>
+<hr>
+<table border="1">
 <tr>
   <td>ID</td>
   <td>Image</td>
@@ -14,6 +14,6 @@
 <td><img src="<%= a_thing.image %>" width="250px"></td>
 <td><%= a_thing.name %></td>
 <td><%= a_thing.dob %></td>
-<td>Show details</td>
+<td><a href="directors/<%= a_thing.id %>">Show details</a></td>
 </tr>
 <% end %>
