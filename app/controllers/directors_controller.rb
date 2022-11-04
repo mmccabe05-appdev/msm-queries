@@ -1,13 +1,20 @@
 class DirectorsController < ApplicationController
-
+ 
   def index
     render({:template => "director_templates/index.html.erb"})
   end
 
-  def eldest
-    @directors_array = Director.all.order({:dob=>"asc"})
-    @oldest_director_name = Director.all.last
+  def wisest
+    @directors_array = Director.where.not({:dob=>nil}).order({:dob=>"asc"})
+    @oldest_director_name = @directors_array.at(0)
+
     render({:template=>"director_templates/eldest.html.erb"})
+  end
+  def newest
+    @directors_array = Director.where.not({:dob=>nil}).order({:dob=>"desc"})
+    @youngest_director_name = @directors_array.at(0)
+
+    render({:template=>"director_templates/youngest.html.erb"})
   end
 
   def director_details
