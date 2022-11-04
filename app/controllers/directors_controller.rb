@@ -18,9 +18,11 @@ class DirectorsController < ApplicationController
   end
 
   def director_details
-    @director_id = params.fetch(:director_id)
+    @director_id = params.fetch("director_id")
+ 
+    @director_hash = Director.where({:id=>@director_id}).first
 
-    @director_hash = Director.all.fetch(@director_id)
+    @filmography = Movie.where({:director_id=>@director_hash})
 
     render({:template=>"director_templates/director_details.html.erb"})
   end 
