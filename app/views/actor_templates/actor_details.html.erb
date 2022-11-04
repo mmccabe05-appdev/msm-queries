@@ -1,0 +1,48 @@
+<h1>Actor #<%= @actor_id %> details</h1>
+ <a href="/actors/">Go back</a>
+ <hr>
+<dl>
+<dt>Name</dt>
+<dd><%= @specific_actor.name %> </dd>
+<dt>Dob</dt>
+<dd><%= @specific_actor.dob %></dd>
+<dt>Bio</dt>
+<dd><%= @specific_actor.bio %></dd>
+
+<dt>Image</dt>
+<dd><img src="<%= @specific_actor.image %>" width="250"></dd>
+
+<dt>Created at</dt>
+<dd><%= time_ago_in_words(@specific_actor.created_at) %> ago</dd>
+<dt>Updated at</dt>
+<dd><%= time_ago_in_words(@specific_actor.updated_at) %> ago</dd>
+</dl>
+
+<hr>
+ <h1>Filmography</h1>
+ <table border="1">
+
+ 
+ <tr>
+  <th>Title</th>
+  <th>Year</th>
+  <th>Director</th>
+  <th>Character Name</th>
+  <th></th>
+
+ </tr>
+ <tr>
+
+<% @filmography.each do |a_character| %> 
+<tr>
+ <td><%= Movie.where({:id=>a_character.movie_id}).first.title %></td>
+  <td><%= Movie.where({:id=>a_character.movie_id}).first.year %></td>
+  <td><%= Director.where({:id=>a_character.movie_id}).first.name %></td>
+  <td>
+  <%= a_character.name %>
+  </td>
+  <td><a href="/movies/<%= Movie.where({:id=>a_character.movie_id}).first.id %>">Show details</a></td>
+</tr>
+<% end %>
+
+ </table>
